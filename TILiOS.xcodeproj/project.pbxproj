@@ -24,6 +24,7 @@
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
+		ECD1C93A2175E0AB0006F68F /* AcronymRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1C9392175E0AB0006F68F /* AcronymRequest.swift */; };
 		ECE3B79C2175C5D40079420A /* ResourceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3B79B2175C5D40079420A /* ResourceRequest.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
+		ECD1C9392175E0AB0006F68F /* AcronymRequest.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AcronymRequest.swift; sourceTree = "<group>"; tabWidth = 4; };
 		ECE3B79B2175C5D40079420A /* ResourceRequest.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ResourceRequest.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 		23FBBD8F20669D9A00DBFA59 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ECD1C9392175E0AB0006F68F /* AcronymRequest.swift */,
 				23FBBD9020669DAD00DBFA59 /* ErrorPresenter.swift */,
 				ECE3B79B2175C5D40079420A /* ResourceRequest.swift */,
 			);
@@ -113,9 +116,9 @@
 				D2A5F2021F4A9144005CD714 /* TILiOS */,
 				D2A5F2011F4A9144005CD714 /* Products */,
 			);
-			indentWidth = 2;
+			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 2;
+			tabWidth = 4;
 		};
 		D2A5F2011F4A9144005CD714 /* Products */ = {
 			isa = PBXGroup;
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
+				ECD1C93A2175E0AB0006F68F /* AcronymRequest.swift in Sources */,
 				ECE3B79C2175C5D40079420A /* ResourceRequest.swift in Sources */,
 				23FBBD952066A67B00DBFA59 /* CreateUserTableViewController.swift in Sources */,
 				23FBBD9120669DAD00DBFA59 /* ErrorPresenter.swift in Sources */,

@@ -61,19 +61,29 @@ class AcronymDetailTableViewController: UITableViewController {
 		getAcronymData()
 	}
 	
-	// MARK: - Navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "EditAcronymSegue" {
-			guard let destination = segue.destination as? CreateAcronymTableViewController else {
-				return
-			}
-			destination.selectedUser = user
-			destination.acronym = acronym
-		}
-	}
-	
 	func getAcronymData() {
+		guard let id = acronym?.id else {
+			return
+		}
 		
+		let acronymDetailRequester = AcronymRequest(acronymID: id)
+		acronymDetailRequester.getUser { [weak self] result in
+			switch result {
+			case .success(let user):
+				self?.user = user
+			case .failure:
+				ErrorPresenter.showError(message: "There was an error getting the acronym's user", on: self)
+			}
+		}
+		
+		acronymDetailRequester.getCategories { [weak self] result in
+			switch result {
+			case .success(let categories):
+				self?.categories = categories
+			case .failure:
+				ErrorPresenter.showError(message: "There was an error getting the acronym's categories", on: self)
+			}
+		}
 	}
 	
 	func updateAcronymView() {
@@ -84,7 +94,30 @@ class AcronymDetailTableViewController: UITableViewController {
 	
 	// MARK: - IBActions
 	@IBAction func updateAcronymDetails(_ segue: UIStoryboardSegue) {
+		guard let controller = segue.source as? CreateAcronymTableViewController else {
+			return
+		}
 		
+		user = controller.selectedUser
+		acronym = controller.acronym
+	}
+	
+	// MARK: - Navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "EditAcronymSegue" {
+			guard let destination = segue.destination as? CreateAcronymTableViewController else {
+				return
+			}
+			destination.selectedUser = user
+			destination.acronym = acronym
+		} else if segue.identifier == "AddToCategorySegue" {
+			guard let destination = segue.destination as? AddToCategoryTableViewController else {
+				return
+			}
+			
+			destination.acronym = acronym
+			destination.selectedCategories = categories
+		}
 	}
 }
 
@@ -92,7 +125,7 @@ class AcronymDetailTableViewController: UITableViewController {
 extension AcronymDetailTableViewController {
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 4
+		return 5
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,9 +143,20 @@ extension AcronymDetailTableViewController {
 			cell.textLabel?.text = user?.name
 		case 3:
 			cell.textLabel?.text = categories[indexPath.row].name
+		case 4:
+			cell.textLabel?.text = "Add To Category"
 		default:
 			break
 		}
+		
+		if indexPath.section == 4 {
+			cell.selectionStyle = .default
+			cell.isUserInteractionEnabled = true
+		} else {
+			cell.selectionStyle = .none
+			cell.isUserInteractionEnabled = false
+		}
+		
 		return cell
 	}
 	
@@ -129,5 +173,39 @@ extension AcronymDetailTableViewController {
 		default:
 			return nil
 		}
+	}
+	
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		if indexPath.section == 3 {
+			return true
+		}
+		return false
+	}
+	
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		guard indexPath.row <= categories.count else {
+			return
+		}
+		
+		let category = categories[indexPath.row]
+		
+		if let id = acronym?.id {
+			let acronymDetailRequester = AcronymRequest(acronymID: id)
+			acronymDetailRequester.deleteCategory(category: category) { [weak self] result in
+				switch result {
+				case .success:
+					self?.categories.remove(at: indexPath.row)
+				case .failure:
+					let message = """
+        There was an error deleting the acronym
+        to the category
+        """
+					ErrorPresenter.showError(message: message, on: self)
+				}
+				
+			}
+		}
+		
+		
 	}
 }
