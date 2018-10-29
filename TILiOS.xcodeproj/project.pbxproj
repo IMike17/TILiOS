@@ -24,6 +24,10 @@
 		D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F2071F4A9144005CD714 /* Main.storyboard */; };
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
+		EC5D5E25218772E5009D0FF4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5D5E24218772E5009D0FF4 /* Login.storyboard */; };
+		EC5D5E27218773A1009D0FF4 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5D5E26218773A1009D0FF4 /* Auth.swift */; };
+		EC5D5E2921878075009D0FF4 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5D5E2821878075009D0FF4 /* Token.swift */; };
+		EC5D5E2B21878100009D0FF4 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5D5E2A21878100009D0FF4 /* LoginTableViewController.swift */; };
 		ECD1C93A2175E0AB0006F68F /* AcronymRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1C9392175E0AB0006F68F /* AcronymRequest.swift */; };
 		ECE3B79C2175C5D40079420A /* ResourceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3B79B2175C5D40079420A /* ResourceRequest.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +52,10 @@
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
+		EC5D5E24218772E5009D0FF4 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = "Project Files/Login.storyboard"; sourceTree = "<group>"; };
+		EC5D5E26218773A1009D0FF4 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		EC5D5E2821878075009D0FF4 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		EC5D5E2A21878100009D0FF4 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		ECD1C9392175E0AB0006F68F /* AcronymRequest.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AcronymRequest.swift; sourceTree = "<group>"; tabWidth = 4; };
 		ECE3B79B2175C5D40079420A /* ResourceRequest.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ResourceRequest.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; };
 /* End PBXFileReference section */
@@ -66,6 +74,7 @@
 		23FBBD8720669D1000DBFA59 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EC5D5E2821878075009D0FF4 /* Token.swift */,
 				23FBBD8820669D1B00DBFA59 /* Acronym.swift */,
 				23FBBD8C20669D4F00DBFA59 /* Category.swift */,
 				23FBBD8A20669D3300DBFA59 /* User.swift */,
@@ -83,6 +92,7 @@
 				23FBBD982066AE8F00DBFA59 /* CreateAcronymTableViewController.swift */,
 				23FBBD922066A67000DBFA59 /* CreateCategoryTableViewController.swift */,
 				23FBBD942066A67B00DBFA59 /* CreateUserTableViewController.swift */,
+				EC5D5E2A21878100009D0FF4 /* LoginTableViewController.swift */,
 				23FBBD9A2066AFAE00DBFA59 /* SelectUserTableViewController.swift */,
 				23FBBD832066980600DBFA59 /* UsersTableViewController.swift */,
 			);
@@ -92,6 +102,7 @@
 		23FBBD8F20669D9A00DBFA59 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EC5D5E26218773A1009D0FF4 /* Auth.swift */,
 				ECD1C9392175E0AB0006F68F /* AcronymRequest.swift */,
 				23FBBD9020669DAD00DBFA59 /* ErrorPresenter.swift */,
 				ECE3B79B2175C5D40079420A /* ResourceRequest.swift */,
@@ -131,6 +142,7 @@
 		D2A5F2021F4A9144005CD714 /* TILiOS */ = {
 			isa = PBXGroup;
 			children = (
+				EC5D5E24218772E5009D0FF4 /* Login.storyboard */,
 				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
 				23FBBD8720669D1000DBFA59 /* Models */,
 				23FBBF742066C7E400DBFA59 /* Project Files */,
@@ -200,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC5D5E25218772E5009D0FF4 /* Login.storyboard in Resources */,
 				D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */,
 				5C2901831F8F6DE700803663 /* LaunchScreen.storyboard in Resources */,
 				D2A5F2091F4A9144005CD714 /* Main.storyboard in Resources */,
@@ -215,12 +228,15 @@
 			files = (
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
 				ECD1C93A2175E0AB0006F68F /* AcronymRequest.swift in Sources */,
+				EC5D5E2B21878100009D0FF4 /* LoginTableViewController.swift in Sources */,
 				ECE3B79C2175C5D40079420A /* ResourceRequest.swift in Sources */,
 				23FBBD952066A67B00DBFA59 /* CreateUserTableViewController.swift in Sources */,
 				23FBBD9120669DAD00DBFA59 /* ErrorPresenter.swift in Sources */,
 				23FBBD8920669D1B00DBFA59 /* Acronym.swift in Sources */,
 				23FBBD932066A67000DBFA59 /* CreateCategoryTableViewController.swift in Sources */,
+				EC5D5E27218773A1009D0FF4 /* Auth.swift in Sources */,
 				23FBBD992066AE8F00DBFA59 /* CreateAcronymTableViewController.swift in Sources */,
+				EC5D5E2921878075009D0FF4 /* Token.swift in Sources */,
 				236A123F207BFBC400931AD3 /* AddToCategoryTableViewController.swift in Sources */,
 				23FBBD8B20669D3300DBFA59 /* User.swift in Sources */,
 				233638932062B99A001588B0 /* AcronymsTableViewController.swift in Sources */,

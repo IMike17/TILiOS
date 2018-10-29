@@ -26,17 +26,15 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import UIKit
+import Foundation
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-	var window: UIWindow?
-	
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-		if Auth().token == nil {
-			let rootController = UIStoryboard(name: "Login", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginNavigation")
-			self.window?.rootViewController = rootController
-		}
-		return true
-	}
+final class Token: Codable {
+  var id: UUID?
+  var token: String
+  var userID: UUID
+
+  init(token: String, userID: UUID) {
+    self.token = token
+    self.userID = userID
+  }
 }
