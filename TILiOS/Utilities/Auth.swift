@@ -85,5 +85,14 @@ class Auth {
 	}
 	
 	func logout() {
+		self.token = nil
+		DispatchQueue.main.async {
+			guard let applicationDelegate = UIApplication.shared.delegate as? AppDelegate else {
+				return
+			}
+			let rootController = UIStoryboard(name: "Login", bundle: Bundle.main)
+				.instantiateViewController(withIdentifier: "LoginNavigation")
+			applicationDelegate.window?.rootViewController = rootController
+		}
 	}
 }
