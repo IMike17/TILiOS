@@ -63,6 +63,10 @@ class UsersTableViewController: UITableViewController {
 			}
 		}
 	}
+	
+	@IBAction func logoutTapped(_ sender: UIBarButtonItem) {
+		Auth().logout()
+	}
 }
 
 // MARK: - UITableViewDataSource

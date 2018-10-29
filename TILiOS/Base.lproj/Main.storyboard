@@ -323,6 +323,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" largeTitleDisplayMode="always" id="rP4-68-6iL">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="W7E-U4-WhQ">
+                            <connections>
+                                <action selector="logoutTapped:" destination="zwl-95-pPq" id="C4z-P1-uyU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="huP-tl-DkL">
                             <connections>
                                 <segue destination="w24-nX-qwH" kind="show" id="NJ2-x1-nFm"/>
