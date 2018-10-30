@@ -98,7 +98,6 @@ class AcronymDetailTableViewController: UITableViewController {
 			return
 		}
 		
-		user = controller.selectedUser
 		acronym = controller.acronym
 	}
 	
@@ -108,8 +107,8 @@ class AcronymDetailTableViewController: UITableViewController {
 			guard let destination = segue.destination as? CreateAcronymTableViewController else {
 				return
 			}
-			destination.selectedUser = user
 			destination.acronym = acronym
+			
 		} else if segue.identifier == "AddToCategorySegue" {
 			guard let destination = segue.destination as? AddToCategoryTableViewController else {
 				return

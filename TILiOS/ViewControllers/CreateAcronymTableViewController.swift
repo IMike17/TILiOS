@@ -33,10 +33,8 @@ class CreateAcronymTableViewController: UITableViewController {
 	// MARK: - IBOutlets
 	@IBOutlet weak var acronymShortTextField: UITextField!
 	@IBOutlet weak var acronymLongTextField: UITextField!
-	@IBOutlet weak var userLabel: UILabel!
 	
 	// MARK: - Properties
-	var selectedUser: User?
 	var acronym: Acronym?
 	
 	// MARK: - View Life Cycle
@@ -47,29 +45,7 @@ class CreateAcronymTableViewController: UITableViewController {
 		if let acronym = acronym {
 			acronymShortTextField.text = acronym.short
 			acronymLongTextField.text = acronym.long
-			userLabel.text = selectedUser?.name
 			navigationItem.title = "Edit Acronym"
-		} else {
-			populateUsers()
-		}
-	}
-	
-	func populateUsers() {
-		let usersRequest = ResourceRequest<User>(resourcePath: "users")
-		usersRequest.getAll { [weak self] result in
-			switch result {
-			case .failure:
-				let message = "There was an error getting the users"
-				ErrorPresenter.showError(message: message, on: self) { _ in
-					self?.navigationController?.popViewController(animated: true)
-				}
-			case .success(let users):
-				DispatchQueue.main.async { [weak self] in
-					self?.userLabel.text = users[0].name
-				}
-				
-				self?.selectedUser = users[0]
-			}
 		}
 	}
 	
@@ -91,16 +67,10 @@ class CreateAcronymTableViewController: UITableViewController {
 				return
 		}
 		
-		guard let userID = selectedUser?.id else {
-			let message = "You must have a user to create an acronym!"
-			ErrorPresenter.showError(message: message, on: self)
-			return
-		}
-		
 		let acronym = Acronym(
 			short: shortText,
 			long: longText,
-			userID: userID)
+			userID: UUID())
 		
 		if self.acronym != nil {
 			// Update Acronym
@@ -134,28 +104,6 @@ class CreateAcronymTableViewController: UITableViewController {
 					}
 				}
 			}
-		}
-		
-	}
-	
-	@IBAction func updateSelectedUser(_ segue: UIStoryboardSegue) {
-		guard let controller = segue.source as? SelectUserTableViewController else {
-			return
-		}
-		
-		selectedUser = controller.selectedUser
-		userLabel.text = selectedUser?.name
-	}
-	
-	// MARK: - Navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "SelectUserSegue" {
-			guard let destination = segue.destination as? SelectUserTableViewController,
-				let user = selectedUser else {
-					return
-			}
-			
-			destination.selectedUser = user
 		}
 	}
 }

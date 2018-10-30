@@ -33,6 +33,8 @@ class CreateUserTableViewController: UITableViewController {
 	// MARK: - IBOutlets
 	@IBOutlet weak var nameTextField: UITextField!
 	@IBOutlet weak var usernameTextField: UITextField!
+	@IBOutlet weak var passwordTextField: UITextField!
+	
 	
 	// MARK: - View Life Cycle
 	override func viewDidLoad() {
@@ -56,8 +58,13 @@ class CreateUserTableViewController: UITableViewController {
 			return
 		}
 		
-		let user = User(name: name, username: username)
-		ResourceRequest<User>(resourcePath: "users").save(user) { [weak self] result in
+		guard let password = passwordTextField.text, !password.isEmpty else {
+			ErrorPresenter.showError(message: "You must specify a password", on: self)
+			return
+		}
+		
+		let user = CreateUser(name: name, username: username, password: password)
+		ResourceRequest<CreateUser>(resourcePath: "users").save(user) { [weak self] result in
 			switch result {
 			case .failure:
 				let message = "There was a problem saving the user"
